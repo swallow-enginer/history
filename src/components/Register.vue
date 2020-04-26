@@ -1,6 +1,11 @@
 <template>
 	<form>
 		<v-text-field
+			v-model="user"
+			:rules="[rules.required]"
+			label="ユーザー名"
+		></v-text-field>
+		<v-text-field
 			v-model="email"
 			:rules="[rules.required, rules.email]"
 			label="メールアドレス"
@@ -16,12 +21,27 @@
 			@click:append="show3 = !show3"
 		></v-text-field>
 		
-		<v-btn 
+		<v-btn
+			class="mt-2"
 			block 
 			color="primary"
 			@click="loader = 'loading'">
 				ログイン
 		</v-btn>
+		
+		<v-divider class="mt-5" ></v-divider>
+		
+		<v-btn
+			class="mt-2"
+			block
+			color="primary"
+			@click="loader = 'loading'">
+			<v-icon left></v-icon>
+			<div block>
+				Twitterで登録
+			</div>
+		</v-btn>
+		
 	</form>
 </template>
 
